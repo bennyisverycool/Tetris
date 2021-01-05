@@ -244,15 +244,15 @@ def main():
                 if event.key == pygame.K_RIGHT or pygame.K_D:  # if user presses d or right arrow key 
                     current_piece.x +=1                        #moves right
                     if not valid_space(current_piece,grid):
-                        current_piece.x -= 1                        # if after the piece moves right, it is not in a valid space, undo all actions by reversing it.
+                        current_piece.x -= 1                        # if after the piece moves right, it is not in a valid space, undo all actions by doing reverse of it.
                 if event.key == pygame.K_UP or pygame.K_W:      # if user presses either w or up arrow
                     current_piece.rotation = current_piece.rotation + 1 % len(current_piece.shape)         # rotate piece       
-                    if not valid_space(current_piece,grid):                                                  
-                        current_piece.rotation = current_piece.rotation - 1 % len(current_piece.shape)   
-                if event.key == pygame.K_DOWN or pygame.K_S:
-                    current_piece.y += 1      
-                    if not valid_space(current_piece,grid):
-                        current_piece.y -= 1    
+                    if not valid_space(current_piece,grid):                                                  # if after rotation piece is not in a valid space on grid
+                        current_piece.rotation = current_piece.rotation - 1 % len(current_piece.shape)   #undo rotation by doing exact opposite as before
+                if event.key == pygame.K_DOWN or pygame.K_S:    #if pressing down s or down arrow
+                    current_piece.y += 1      #move piece down
+                    if not valid_space(current_piece,grid): # if not in valid pos
+                        current_piece.y -= 1    #undo actions 
         shape_pos = convert_shape_format(current_piece)
 
 
