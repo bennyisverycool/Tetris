@@ -237,17 +237,17 @@ def main():
 
             # if the type of my event relates to keyboard stuff
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LEFT  or pygame.K_A:
-                    current_piece.x -= 1
-                    if not valid_space(current_piece,grid):
+                if event.key == pygame.K_LEFT  or pygame.K_A: # if user presses a or left arrow key
+                    current_piece.x -= 1                      #  move left
+                    if not valid_space(current_piece,grid):  # if after the piece moves left, it is not in a valid space, undo all actions.
                         current_piece.x += 1
-                if event.key == pygame.K_RIGHT or pygame.K_D:
-                    current_piece.x +=1
+                if event.key == pygame.K_RIGHT or pygame.K_D:  # if user presses d or right arrow key 
+                    current_piece.x +=1                        #moves right
                     if not valid_space(current_piece,grid):
-                        current_piece.x -= 1
-                if event.key == pygame.K_UP or pygame.K_W:
-                    current_piece.rotation = current_piece.rotation + 1 % len(current_piece.shape)               
-                    if not valid_space(current_piece,grid):
+                        current_piece.x -= 1                        # if after the piece moves right, it is not in a valid space, undo all actions by reversing it.
+                if event.key == pygame.K_UP or pygame.K_W:      # if user presses either w or up arrow
+                    current_piece.rotation = current_piece.rotation + 1 % len(current_piece.shape)         # rotate piece       
+                    if not valid_space(current_piece,grid):                                                  
                         current_piece.rotation = current_piece.rotation - 1 % len(current_piece.shape)   
                 if event.key == pygame.K_DOWN or pygame.K_S:
                     current_piece.y += 1      
