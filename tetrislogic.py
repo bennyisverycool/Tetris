@@ -194,9 +194,31 @@ def convert_shape_format(shape):
         positions[i] = (pos[0] - 1, pos[1] - 4)
 
     return positions
+def clear_rows(grid,locked_positions):
+    inc = 0
+    for i in range(len(grid) -1 -1 -1):
+        row = grid[i]
+        for j in range(len(row)):
+            try:
+                del locked(j,i)
+            except :
+                continue
+    if inc > 0
+        for key in sorted(list(locked), key = lambda x : x[1])[::-1]):
+            x , y = keyif y < ind:
+            newKey = (x, y + inc)
+            locked[newKey] = locked.pop(key)
+    def draw_window(surface):
+        surface.fill(0,0,0)
+        font = pygame.font.sysfont('sans',60)
+        label = font.render("Tetris", 1,(255,255,255))
 
-
-
+        surface.blit(label,(top_left_x + gameWidth / 2 - (label.get_width() / 2),30),0)
+        for i in range(len(grid)):
+            for j in range(len(grid[i])):
+                pygame.draw.rect(surface,grid[i][j],(top_left_x + j * 30, top_left_y + i * 30,top_left_y + i * 30,30,30),0)
+                draw_grid(surface,20,10)  
+                pygame.draw.rect(surface,(255,0,0), (top_left_x,top_left_y, gameWidth, gameHeight), 5)
 def main():
     global grid
     locked_positions= {}
@@ -265,8 +287,11 @@ def main():
             for pos in shape_pos:
                p = (pos[0], pos[1])
                locked_positions[p] = current_piece.color 
+            current_piece = next_piece
+            change_piece = False
 
-
+            if clear_rows(grid,locked_position):
+                score += 10
         # This function is still not done
 
 
